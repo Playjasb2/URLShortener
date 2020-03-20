@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+body {
+	background-image: url("https://images3.alphacoders.com/264/264405.jpg");
+	background-repeat: no-repeat;
+	
+	background-size: cover;
+	position: relative
+    
+}
+form{
+	display: table;
+}
+
+div {
+	background-color : lightblue;
+	width: 400px;
+    margin: auto;
+    border: 8px solid grey;
+    padding-left: 30px;
+    height: 300px;
+}
+p{
+	font-size:42px;
+	font-family: Papyrus;
+	font-weight: bold;
+	color: red;
+	font-style: oblique;
+	text-align: center;
+}
+input
+{
+    background-color: #BFBDBD;
+    border:solid 1px #BFBDBD;
+    color: white;
+    height: 34px;
+    width: auto;
+    box-shadow: 2px 2px 0 #828181 inset;
+    border: 0;
+    border-radius:5px;
+    font-family: Papyrus;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+</style>
+
+<title>DarkSkulls URLShortner</title>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+<script>
+$(".error").hide()
+
+function myfunc() {
+console.log("hihi");
+    //e.preventDefault();
+  var myData = "/?short=" + $('#short').val() + "\&long=" + $('#long').val();
+  console.log(myData);
+  if($('#short').val.length > 24){
+	$(".error").text("Your short must be up to 24 characters long.");
+	$(".error").show();
+  }else if($('#long').val.length > 120){
+	$(".error").text("Your long must be up to 120 characters long.");
+	$(".error").show();
+  }else{
+  	$.ajax({
+    		url: "http://dh2026pc12.utm.utoronto.ca:1235" + myData,
+    		method: "PUT" 
+  	});
+	}
+}
+
+</script>
+
+
+</head>
+<body>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div>  <form action="">
+  <p>short:    <input id="short" type="text" name="short"></p>
+  <p>long:     <input id="long" type="text" name="long"></p>
+</form> 
+<button id="submit" onclick="myfunc()"> Submit </button>
+</div>
+<div class=error> </div>
+</body>
+</html>
